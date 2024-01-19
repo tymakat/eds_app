@@ -16,7 +16,7 @@ def create_map(df):
         geoshape = json.loads(geoshape_json)
 
         # Create a polygon for each neighborhood and add it to the map
-        folium.GeoJson(geoshape, name=row['NeighborhoodName']).add_to(m)  # Replace 'NeighborhoodName' with the actual column name
+        folium.GeoJson(geoshape, name=row['NbName']).add_to(m)  # Replace 'NeighborhoodName' with the actual column name
 
     return m
 
