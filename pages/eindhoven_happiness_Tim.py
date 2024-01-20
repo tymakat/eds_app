@@ -88,5 +88,6 @@ def app():
     
     ax.set_xlabel('Happiness Score')  # Set x-axis label
     ax.set_ylabel('Percentage of people engaged in sports')
-
+    ax.set_title('Happiness Score vs Physical activity')
+    st.pyplot(fig)
 app()
