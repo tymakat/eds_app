@@ -21,7 +21,7 @@ def create_map(df):
     fig = px.choropleth_mapbox(
         df,
         geojson=geojson,
-        color="dummy_value",
+        color="ScoreGoodLife",
         locations="NbId",
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
