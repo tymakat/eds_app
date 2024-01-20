@@ -12,7 +12,7 @@ def create_map(df):
         geoshape_json = json.loads(row["Geoshape"])
         geoshape = {'type': 'Feature',
             'properties': {'name': row['NbName']},
-            'id': row["NbId"],
+            'id': row["NbName"],
             'geometry': geoshape_json}
         features.append(geoshape)
         if len(features) <= 5:
@@ -25,7 +25,7 @@ def create_map(df):
         geojson=geojson,
         color="ScoreGoodLife",
         locations="NbId",
-        featureidkey="properties.name",
+        featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
         color_discrete_map={np.nan: "gray"},
