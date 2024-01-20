@@ -47,7 +47,7 @@ def create_map(df):
         width=1000    # Set the width of the map in pixels
     )
     fig.update_traces(
-    hoverlabel=dict(font_size=16)  # Adjust the font size as needed
+    hoverlabel=dict(font_size=15)  # Adjust the font size as needed
     )
 
     return fig
