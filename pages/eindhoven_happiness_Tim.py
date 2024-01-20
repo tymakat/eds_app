@@ -17,6 +17,9 @@ def create_map(df):
         geoshape['properties'] = {'name': row['NbName']}
 
         features.append(geoshape)
+    
+    if len(features) <= 5:
+        print(geoshape)
 
     # Create a GeoJSON object with all the features
     geojson = {'type': 'FeatureCollection', 'features': features}
@@ -29,6 +32,7 @@ def create_map(df):
                                center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
                                mapbox_style="open-street-map",
                                zoom=10,
+                               
                                opacity=0.5)
 
     return fig
