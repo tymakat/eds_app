@@ -24,7 +24,7 @@ def create_map(df):
     # Create the map using Plotly
     fig = px.choropleth_mapbox(geojson,
                                geojson=geojson,
-                               locations='name',  # Use the neighborhood name for the location
+                               locations=[feature['properties']['name'] for feature in features],
                                featureidkey="properties.name",
                                center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
                                mapbox_style="open-street-map",
