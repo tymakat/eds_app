@@ -18,21 +18,24 @@ def create_map(df):
             print(geoshape)
     geojson = {'type': 'FeatureCollection', 'features': features}
     # Create a DataFrame for the locations
-    locations_df = pd.DataFrame({
-        'id': [feature['properties']['id'] for feature in features],
-        'dummy_value': [1] * len(features)  # Plotly requires a value to color the shapes
-    })
 
-    fig = px.choropleth_mapbox(
-        locations_df,
-        geojson=geojson,
-        color="dummy_value",
-        locations="id",
-        featureidkey="properties.id",
-        center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
-        mapbox_style="open-street-map",
-        zoom=10
-    )
+   #/* fig = px.choropleth_mapbox(
+     #   locations_df,
+      #  geojson=geojson,
+     #   color="dummy_value",
+     #   locations="id",
+     #   featureidkey="properties.id",
+    #    center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
+    #    mapbox_style="open-street-map",
+   #     zoom=10
+  #  ) */
+    fig = px.choropleth(df, geojson=geojson, locations='NbId', color='unemp',
+                            color_continuous_scale="Viridis",
+                            range_color=(0, 12),
+                            center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
+                            labels={'Happiness':'Happiness rate'},
+                            zoom=10
+                          )
 
     return fig
 
