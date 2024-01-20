@@ -83,7 +83,7 @@ def app():
     st.image(buf)
     
     st.markdown("#### Percentage of people doing sports vs. Happiness score")
-    fig1, ax = plt.subplots(figsize=(4, 4))
+    fig1, ax = plt.subplots(figsize=(5, 5))
     ax.scatter(df["Happiness score"], df["PctSports"])
     
     ax.set_xlabel('Happiness Score')  # Set x-axis label
