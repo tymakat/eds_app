@@ -92,8 +92,8 @@ def app():
     buf = BytesIO()
     fig1.savefig(buf, format="png")
     st.image(buf)
-    
-    smileys_replaced = df["Happiness rank"].replace("🥉", 3)
+    smileys_replaced = df
+    smileys_replaced = smileys_replaced["Happiness rank"].replace("🥉", 3)
     smileys_replaced = smileys_replaced["Happiness rank"].replace("🥈", 2)
     smileys_replaced = smileys_replaced["Happiness rank"].replace("🥇", 1)
     smileys_replaced = smileys_replaced["PctUnemployed"].replace("N/A", pd.NA)
