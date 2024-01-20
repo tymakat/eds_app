@@ -4,6 +4,8 @@ import plotly.express as px
 import json
 import numpy as np
 
+st.set_page_config(layout="wide")
+
 # Function to create the Plotly map with GeoJSON
 def create_map(df):
     # Assuming 'Geoshape' column contains stringified GeoJSON and 'NbName' is the identifier
