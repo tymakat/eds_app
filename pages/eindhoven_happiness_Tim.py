@@ -12,7 +12,8 @@ def create_map(df):
     for _, row in df.iterrows():
         geoshape_json = row['Geoshape']
         geoshape = json.loads(geoshape_json)
-        geoshape['properties'] = {'name': row['NbName']}
+        geoshape['properties'] = {'name': row['NbName'],
+                                  'happiness': row["ScoreGoodLife"]}
         features.append(geoshape)
 
         # Debugging: Print out the first few GeoJSON objects
@@ -26,6 +27,9 @@ def create_map(df):
     fig = px.choropleth_mapbox(geojson,
                                geojson=geojson,
                                locations=[f['properties']['name'] for f in features],
+                               color=[f['properties']['happiness'] for f in features],
+                               color_continuous_scale="Viridis",
+                               range_color=(0, 12),
                                featureidkey="properties.name",
                                center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
                                mapbox_style="open-street-map",
