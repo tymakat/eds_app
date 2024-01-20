@@ -25,7 +25,7 @@ def create_map(df):
         geojson=geojson,
         color="ScoreGoodLife",
         locations="NbId",
-        featureidkey="id",
+        featureidkey="properties.name",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
         color_discrete_map={np.nan: "gray"},
