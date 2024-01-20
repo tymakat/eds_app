@@ -36,7 +36,7 @@ def create_map(df):
         locations="NbId",
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},
-        hover_data=['NbName', 'Happiness'], # Adjust as needed
+        hover_data=['Neighbourhood', 'Happiness', "Happiness rank", "Happiness score"], # Adjust as needed
         mapbox_style="open-street-map",
         zoom=11.8,
         opacity=0.8
