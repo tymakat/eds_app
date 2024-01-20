@@ -13,7 +13,7 @@ def create_map(df):
     for _, row in df.iterrows():
         geoshape_json = json.loads(row["Geoshape"])
         geoshape = {'type': 'Feature',
-            'properties': {'name': row['NbName']},
+            'properties': {'name': row['Neighbourhood']},
             'id': row["NbId"],
             'geometry': geoshape_json}
         features.append(geoshape)
