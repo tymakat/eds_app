@@ -12,14 +12,12 @@ def create_map(df):
     for _, row in df.iterrows():
         geoshape_json = row['Geoshape']
         geoshape = json.loads(geoshape_json)
-
-        # Add the neighborhood name as a property (for the hover information)
         geoshape['properties'] = {'name': row['NbName']}
-
         features.append(geoshape)
-    
-    if len(features) <= 5:
-        print(geoshape)
+
+        # Debugging: Print out the first few GeoJSON objects
+        if len(features) <= 5:
+            print(geoshape)
 
     # Create a GeoJSON object with all the features
     geojson = {'type': 'FeatureCollection', 'features': features}
@@ -34,7 +32,10 @@ def create_map(df):
                                zoom=10,
                                
                                opacity=0.5)
-
+    fig.update_layout(
+        height=900,  # Height of the map in pixels
+        width=1200   # Width of the map in pixels
+    )
     return fig
 
 # Streamlit app
