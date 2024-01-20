@@ -29,11 +29,11 @@ def create_map(df):
     #    mapbox_style="open-street-map",
    #     zoom=10
   #  ) */
-    fig = px.choropleth(df, geojson=geojson, locations='NbId', color='unemp',
+    fig = px.choropleth(df, geojson=geojson, locations='NbId', color='ScoreGoodLife',
                             color_continuous_scale="Viridis",
                             range_color=(0, 12),
                             center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
-                            labels={'Happiness':'Happiness rate'},
+                            labels={'Happiness':'Happiness rate'}
                           )
 
     return fig
