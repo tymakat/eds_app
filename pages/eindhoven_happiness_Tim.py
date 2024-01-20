@@ -35,8 +35,8 @@ def create_map(df):
     )
     
     fig.update_layout(
-        height=800,  # Set the height of the map in pixels
-        width=1300    # Set the width of the map in pixels
+        height=900,  # Set the height of the map in pixels
+        width=1100    # Set the width of the map in pixels
     )
 
     return fig
