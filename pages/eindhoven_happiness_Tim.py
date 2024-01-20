@@ -74,6 +74,6 @@ def app():
     # Display the plot in Streamlit
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    st.image(buf)
+    st.image(buf, width=200, height=140)
     
 app()
