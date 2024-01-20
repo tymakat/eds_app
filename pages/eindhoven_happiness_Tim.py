@@ -69,18 +69,24 @@ def app():
     value_counts = df_top_30['Preferrable type of transport'].value_counts()
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
+    
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
-    fig, ax = plt.subplots(figsize=(6, 5))
-    ax.set_facecolor('#0E1117')
+    fig, ax = plt.subplots(figsize=(6, 6))
     explode = (0, 0.1, 0, 0)
     colors = ['#e1e9f5','#7792bd','#2f4f82','#062454']
     
     # Create a pie chart on the axis
     ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%', explode=explode, shadow=True, startangle=90, colors = colors)
-    ax.legend()
     # Display the plot in Streamlit
     buf = BytesIO()
     fig.savefig(buf, format="png")
     st.image(buf)
     
+    st.markdown("#### Percentage of people doing sports vs. Happiness score")
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ax.scatter(df["Happiness score"], df["PctSports"])
+    
+    ax.set_xlabel('Happiness Score')  # Set x-axis label
+    ax.set_ylabel('Percentage of people engaged in sports')
+
 app()
