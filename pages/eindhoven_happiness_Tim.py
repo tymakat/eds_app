@@ -22,10 +22,10 @@ def create_map(df):
     geojson = {'type': 'FeatureCollection', 'features': features}
     # Create a DataFrame for the locations
     color_scale = [
-    (0, "white"),  # Color for 0 values
+    (0, "grey"),  # Color for 0 values
     # Define other colors for the rest of your scale
     (0.7, "red"),  # Example: Color for values > 0
-    (1, "green")   # Ensure the scale covers the full range of your data
+    (1, "white")   # Ensure the scale covers the full range of your data
     ]
     fig = px.choropleth_mapbox(
         df,
