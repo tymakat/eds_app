@@ -24,8 +24,8 @@ def create_map(df):
     color_scale = [
     (0, "grey"),  # Color for 0 values
     # Define other colors for the rest of your scale
-    (0.7, "red"),  # Example: Color for values > 0
-    (0.9, "white"),
+    (0.6, "red"),  # Example: Color for values > 0
+    (0.8, "white"),
     (1, "green") # Ensure the scale covers the full range of your data
     ]
     fig = px.choropleth_mapbox(
