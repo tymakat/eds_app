@@ -73,7 +73,7 @@ def app():
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
     fig, ax = plt.subplots(figsize=(6, 6))
     explode = (0, 0.1, 0, 0)
-    colors = ['#e1e9f5','#7792bd','#2f4f82','#062454']
+    colors = ['#7792bd','#e1e9f5','#2f4f82','#062454']
     
     # Create a pie chart on the axis
     ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%', explode=explode, shadow=True, startangle=90, colors = colors)
@@ -92,4 +92,23 @@ def app():
     buf = BytesIO()
     fig1.savefig(buf, format="png")
     st.image(buf)
+    
+    smileys_replaced = df["Happiness rank"].replace("🥉", 3)
+    smileys_replaced = smileys_replaced["Happiness rank"].replace("🥈", 2)
+    smileys_replaced = smileys_replaced["Happiness rank"].replace("🥇", 1)
+    smileys_replaced = smileys_replaced["PctUnemployed"].replace("N/A", pd.NA)
+    smileys_replaced = smileys_replaced["PctHighEducation"].replace("N/A", pd.NA)
+    smileys_replaced["Happiness rank"] = pd.to_numeric(smileys_replaced["Happiness rank"], errors="coerce")
+    smileys_replaced = smileys_replaced.dropna(subset=["Happiness rank"])
+    smileys_replaced = smileys_replaced.dropna(subset=["PctHighEducation"])
+    smileys_replaced = smileys_replaced.dropna(subset=["PctUnemployed"])
+    st.markdown("#### How higher education and unemployment influences happiness")
+    fig, ax = plt.subplots()
+    ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctHighEducation"], label="% of people with higher education")
+    ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctUnemployed"], label="% of unemployed")
+    ax.legend()
+
+    # Show the plot
+    st.pyplot(fig)
+
 app()
