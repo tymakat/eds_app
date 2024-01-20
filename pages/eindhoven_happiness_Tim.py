@@ -65,7 +65,7 @@ def app():
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
-    plt.figure(figsize=(4, 4))  # Adjust the figure size as needed
+    plt.figure(figsize=(5, 5))  # Adjust the figure size as needed
     plt.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
     st.pyplot()
 app()
