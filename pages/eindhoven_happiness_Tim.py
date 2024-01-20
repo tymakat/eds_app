@@ -30,13 +30,13 @@ def create_map(df):
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
-        color_discrete_map={np.nan: "gray"},
+        color_discrete_map={0: "gray"},
         zoom=11.8
     )
     
     fig.update_layout(
-        height=1100,  # Set the height of the map in pixels
-        width=1100    # Set the width of the map in pixels
+        height=1000,  # Set the height of the map in pixels
+        width=1000    # Set the width of the map in pixels
     )
 
     return fig
