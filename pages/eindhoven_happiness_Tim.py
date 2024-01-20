@@ -8,10 +8,11 @@ def create_map(df):
     # Assuming 'Geoshape' column contains stringified GeoJSON and 'NbName' is the identifier
     features = []
     for _, row in df.iterrows():
+
         geoshape_json = row['Geoshape']
         geoshape = json.loads({'type': 'Feature',
             'properties': {'name': row['NbName']},
-            'geometry': json.loads(geoshape_json),
+            'geometry': json.dumps(geoshape_json),
             'id': row["NbId"]})
         features.append(geoshape)
         if len(features) <= 5:
