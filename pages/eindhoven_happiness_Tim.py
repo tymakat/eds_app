@@ -8,7 +8,6 @@ def create_map(df):
     # Assuming 'Geoshape' column contains stringified GeoJSON and 'NbName' is the identifier
     features = []
     for _, row in df.iterrows():
-        geoshape_json = row['Geoshape']
         geoshape = {'type': 'Feature',
             'properties': {'name': row['NbName']},
             'id': row["NbId"],
@@ -19,22 +18,16 @@ def create_map(df):
     geojson = {'type': 'FeatureCollection', 'features': features}
     # Create a DataFrame for the locations
 
-   #/* fig = px.choropleth_mapbox(
-     #   locations_df,
-      #  geojson=geojson,
-     #   color="dummy_value",
-     #   locations="id",
-     #   featureidkey="properties.id",
-    #    center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
-    #    mapbox_style="open-street-map",
-   #     zoom=10
-  #  ) */
-    fig = px.choropleth(df, geojson=geojson, locations='NbId', color='ScoreGoodLife',
-                            color_continuous_scale="Viridis",
-                            range_color=(0, 12),
-                            center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
-                            labels={'Happiness':'Happiness rate'}
-                          )
+    fig = px.choropleth_mapbox(
+        df,
+        geojson=geojson,
+        color="dummy_value",
+        locations="id",
+        featureidkey="id",
+        center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
+        mapbox_style="open-street-map",
+        zoom=10
+    )
 
     return fig
 
