@@ -37,7 +37,7 @@ def create_map(df):
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
         zoom=11.8,
-        opacity=0.5
+        opacity=0.2
     )
     
     fig.update_layout(
