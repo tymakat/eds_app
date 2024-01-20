@@ -5,7 +5,6 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_option('global.disablePydeckWarnings', True)
 st.set_page_config(layout="wide")
 
 # Function to create the Plotly map with GeoJSON
@@ -66,7 +65,7 @@ def app():
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
-    plt.figure(figsize=(3, 3))  # Adjust the figure size as needed
+    plt.figure(figsize=(5, 5))  # Adjust the figure size as needed
     plt.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
-    st.pyplot()
+    st.pyplot(use_container_width=True)
 app()
