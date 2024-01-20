@@ -1,33 +1,46 @@
 import streamlit as st
-from streamlit_folium import folium_static
-import folium
 import pandas as pd
+import plotly.express as px
 import json
 
-# Function to create the folium map
+# Function to create the Plotly map with GeoJSON
 def create_map(df):
-    # Initialize a map. You might want to set a default location
-    m = folium.Map(location=[51.4416, 5.4697], zoom_start=12, tiles="cartodb positron")
+    # List to hold the GeoJSON features
+    features = []
 
-    # Loop through each neighborhood in the DataFrame
+    # Loop through DataFrame and convert each row's GeoJSON to a feature
     for _, row in df.iterrows():
-        # Extract GeoShape data
         geoshape_json = row['Geoshape']
         geoshape = json.loads(geoshape_json)
 
-        # Create a polygon for each neighborhood and add it to the map
-        folium.GeoJson(geoshape, name=row['NbName']).add_to(m)  # Replace 'NeighborhoodName' with the actual column name
+        # Add the neighborhood name as a property (for the hover information)
+        geoshape['properties'] = {'name': row['NbName']}
 
-    return m
+        features.append(geoshape)
+
+    # Create a GeoJSON object with all the features
+    geojson = {'type': 'FeatureCollection', 'features': features}
+
+    # Create the map using Plotly
+    fig = px.choropleth_mapbox(geojson,
+                               geojson=geojson,
+                               locations='name',  # Use the neighborhood name for the location
+                               featureidkey="properties.name",
+                               center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
+                               mapbox_style="open-street-map",
+                               zoom=10,
+                               opacity=0.5)
+
+    return fig
 
 # Streamlit app
 def app():
-    st.title('Happiness in Eindhoven neighbourhoods')
+    st.title('Happiness in Eindhoven Neighbourhoods')
 
     # Load your dataset
     df = pd.read_csv("data/tim_main_dataset.csv")  # Replace with your actual file path and name
 
     st_map = create_map(df)
-    folium_static(st_map)
+    st.plotly_chart(st_map, use_container_width=True)
 
 app()
