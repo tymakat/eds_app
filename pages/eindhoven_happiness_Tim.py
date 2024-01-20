@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import json
 import numpy as np
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
@@ -47,7 +48,8 @@ def create_map(df):
         width=1000    # Set the width of the map in pixels
     )
     fig.update_traces(
-    hoverlabel=dict(font_size=15)  # Adjust the font size as needed
+    hoverlabel=dict(font_size=15)  
+    # Adjust the font size as needed
     )
 
     return fig
@@ -58,8 +60,11 @@ def app():
 
     # Load your dataset
     df = pd.read_csv("data/tim_main_dataset.csv")  # Replace with your actual file path and name
-
+    df_top_30 = df.head(30)
+    value_counts = df_top_30['Preferrable type of transport'].value_counts()
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
-
+    st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
+    plt.figure(figsize=(8, 8))  # Adjust the figure size as needed
+    plt.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
 app()
