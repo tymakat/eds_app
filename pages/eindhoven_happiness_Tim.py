@@ -4,6 +4,7 @@ import plotly.express as px
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+from io import BytesIO
 
 st.set_page_config(layout="wide")
 
@@ -69,8 +70,10 @@ def app():
     fig.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
     # Create a pie chart on the axis
     ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
-
+    ax.legend()
     # Display the plot in Streamlit
-    st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
     
 app()
