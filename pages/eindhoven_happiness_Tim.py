@@ -71,7 +71,7 @@ def app():
     st.plotly_chart(st_map, use_container_width=True)
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
     fig, ax = plt.subplots(figsize=(6, 5))
-    ax.set_facecolor('#0E1117')
+    ax.set_facecolor('black')
     # Create a pie chart on the axis
     ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
     ax.legend()
