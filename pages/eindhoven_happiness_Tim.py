@@ -29,6 +29,11 @@ def create_map(df):
         mapbox_style="open-street-map",
         zoom=10
     )
+    
+    fig.update_layout(
+        height=800,  # Set the height of the map in pixels
+        width=1300    # Set the width of the map in pixels
+    )
 
     return fig
 
