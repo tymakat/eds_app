@@ -17,7 +17,7 @@ def create_map(df):
 
         # Debugging: Print out the first few GeoJSON objects
         if len(features) <= 5:
-            print(geoshape)
+            st.write(geoshape)
 
     # Create a GeoJSON object with all the features
     geojson = {'type': 'FeatureCollection', 'features': features}
@@ -25,7 +25,7 @@ def create_map(df):
     # Create the map using Plotly
     fig = px.choropleth_mapbox(geojson,
                                geojson=geojson,
-                               locations=[feature['properties']['name'] for feature in features],
+                               locations=[f['properties']['name'] for f in features],
                                featureidkey="properties.name",
                                center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
                                mapbox_style="open-street-map",
