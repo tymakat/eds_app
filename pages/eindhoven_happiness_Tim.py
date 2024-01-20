@@ -65,7 +65,12 @@ def app():
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
-    plt.figure(figsize=(3, 3))  # Adjust the figure size as needed
-    plt.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
-    st.pyplot(use_container_width=True)
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    # Create a pie chart on the axis
+    ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%')
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
+    
 app()
