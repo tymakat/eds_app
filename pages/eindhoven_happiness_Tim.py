@@ -67,4 +67,5 @@ def app():
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
     plt.figure(figsize=(8, 8))  # Adjust the figure size as needed
     plt.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
+    st.pyplot()
 app()
