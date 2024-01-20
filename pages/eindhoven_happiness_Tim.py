@@ -9,11 +9,12 @@ def create_map(df):
     features = []
     for _, row in df.iterrows():
         geoshape_json = row['Geoshape']
-        geoshape = json.loads(geoshape_json.replace('""', '"'))
+        geoshape = geoshape_json
         geoshape['properties'] = {'name': row['NbName']}
         geoshape['id'] = {row["NbId"]}
         geoshape['type'] = {"Feature"}
         geoshape['geometry'] = {geoshape}
+        geoshape = json.loads(geoshape)
         features.append(geoshape)
         if len(features) <= 5:
             print(geoshape)
