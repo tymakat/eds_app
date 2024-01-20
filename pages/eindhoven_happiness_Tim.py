@@ -68,7 +68,7 @@ def app():
     fig, ax = plt.subplots(figsize=(8, 8))
 
     # Create a pie chart on the axis
-    ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%')
+    ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
 
     # Display the plot in Streamlit
     st.pyplot(fig)
