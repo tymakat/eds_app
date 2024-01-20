@@ -83,11 +83,13 @@ def app():
     st.image(buf)
     
     st.markdown("#### Percentage of people doing sports vs. Happiness score")
-    fig, ax = plt.subplots(figsize=(6, 6))
+    fig1, ax = plt.subplots(figsize=(6, 6))
     ax.scatter(df["Happiness score"], df["PctSports"])
     
     ax.set_xlabel('Happiness Score')  # Set x-axis label
-    ax.set_ylabel('Percentage of people engaged in sports')
+    ax.set_ylabel("% of people engaged in sports")
     ax.set_title('Happiness Score vs Physical activity')
-    st.pyplot(fig)
+    buf = BytesIO()
+    fig1.savefig(buf, format="png")
+    st.image(buf)
 app()
