@@ -5,41 +5,33 @@ import json
 
 # Function to create the Plotly map with GeoJSON
 def create_map(df):
-    # List to hold the GeoJSON features
+    # Assuming 'Geoshape' column contains stringified GeoJSON and 'NbName' is the identifier
     features = []
-
-    # Loop through DataFrame and convert each row's GeoJSON to a feature
     for _, row in df.iterrows():
         geoshape_json = row['Geoshape']
         geoshape = json.loads(geoshape_json)
-        geoshape['properties'] = {'name': row['NbName'],
-                                  'happiness': row["ScoreGoodLife"]}
+        geoshape['properties'] = {'id': row['NbName']}
         features.append(geoshape)
 
-        # Debugging: Print out the first few GeoJSON objects
-        if len(features) <= 5:
-            st.write(geoshape)
-
-    # Create a GeoJSON object with all the features
     geojson = {'type': 'FeatureCollection', 'features': features}
 
-    # Create the map using Plotly
-    fig = px.choropleth_mapbox(geojson,
-                               geojson=geojson,
-                               locations=[f['properties']['name'] for f in features],
-                               color=[f['properties']['happiness'] for f in features],
-                               color_continuous_scale="Viridis",
-                               range_color=(0, 12),
-                               featureidkey="properties.name",
-                               center={"lat": 51.4416, "lon": 5.4697},  # Center of the map
-                               mapbox_style="open-street-map",
-                               zoom=10,
-                               
-                               opacity=0.5)
-    fig.update_layout(
-        height=900,  # Height of the map in pixels
-        width=1200   # Width of the map in pixels
+    # Create a DataFrame for the locations
+    locations_df = pd.DataFrame({
+        'id': [feature['properties']['id'] for feature in features],
+        'dummy_value': [1] * len(features)  # Plotly requires a value to color the shapes
+    })
+
+    fig = px.choropleth_mapbox(
+        locations_df,
+        geojson=geojson,
+        color="dummy_value",
+        locations="id",
+        featureidkey="properties.id",
+        center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
+        mapbox_style="open-street-map",
+        zoom=10
     )
+
     return fig
 
 # Streamlit app
