@@ -34,7 +34,6 @@ def create_map(df):
                             range_color=(0, 12),
                             center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
                             labels={'Happiness':'Happiness rate'},
-                            zoom=10
                           )
 
     return fig
