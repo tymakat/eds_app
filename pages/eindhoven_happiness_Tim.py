@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import json
+import numpy as np
 
 # Function to create the Plotly map with GeoJSON
 def create_map(df):
@@ -27,7 +28,8 @@ def create_map(df):
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
-        zoom=11
+        color_discrete_map={np.nan: "gray"},
+        zoom=14
     )
     
     fig.update_layout(
