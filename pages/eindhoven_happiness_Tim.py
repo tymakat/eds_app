@@ -12,7 +12,8 @@ def create_map(df):
         geoshape = json.loads(geoshape_json.replace('""', '"'))
         geoshape['properties'] = {'id': row['NbId']}
         features.append(geoshape)
-
+        if len(features) <= 5:
+            print(geoshape)
     geojson = {'type': 'FeatureCollection', 'features': features}
 
     # Create a DataFrame for the locations
