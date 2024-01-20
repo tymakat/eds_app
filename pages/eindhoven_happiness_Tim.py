@@ -30,6 +30,7 @@ def create_map(df):
     fig = px.choropleth_mapbox(
         df,
         geojson=geojson,
+        color='ScoreGoodLife',
         color_continuous_scale=color_scale,
         locations="NbId",
         featureidkey="id",
