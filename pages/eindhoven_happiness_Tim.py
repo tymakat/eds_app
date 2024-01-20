@@ -12,7 +12,7 @@ def create_map(df):
         geoshape = {'type': 'Feature',
             'properties': {'name': row['NbName']},
             'id': row["NbId"],
-            'geometry': geoshape_json}
+            'geometry': row["Geoshape"]}
         features.append(geoshape)
         if len(features) <= 5:
             print(geoshape)
