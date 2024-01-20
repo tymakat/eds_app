@@ -24,18 +24,17 @@ def create_map(df):
     color_scale = [
     (0, "grey"),  # Color for 0 values
     # Define other colors for the rest of your scale
-    (0, "red"),  # Example: Color for values > 0
+    (1, "red"),  # Example: Color for values > 0
     (10, "green")   # Ensure the scale covers the full range of your data
     ]
     fig = px.choropleth_mapbox(
         df,
         geojson=geojson,
-        color="ScoreGoodLife",
+        color_continuous_scale=color_scale,
         locations="NbId",
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
-        color_discrete_map={0: "gray"},
         zoom=11.8
     )
     
