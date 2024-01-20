@@ -6,6 +6,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO
 
+plt.rcParams['text.color'] = 'black'
+plt.rcParams['axes.labelcolor'] = 'black'
+plt.rcParams['xtick.color'] = 'black'
+plt.rcParams['ytick.color'] = 'black'
+
 st.set_page_config(layout="wide")
 # Function to create the Plotly map with GeoJSON
 def create_map(df):
