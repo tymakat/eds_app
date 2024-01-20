@@ -25,7 +25,7 @@ def create_map(df):
     (0, "white"),  # Color for 0 values
     # Define other colors for the rest of your scale
     (0.7, "red"),  # Example: Color for values > 0
-    (1, "lightgreen")   # Ensure the scale covers the full range of your data
+    (1, "green")   # Ensure the scale covers the full range of your data
     ]
     fig = px.choropleth_mapbox(
         df,
