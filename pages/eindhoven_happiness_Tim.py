@@ -7,10 +7,6 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 
 st.set_page_config(layout="wide")
-plt.rcParams['text.color'] = 'white'
-plt.rcParams['axes.labelcolor'] = 'white'
-plt.rcParams['xtick.color'] = 'white'
-plt.rcParams['ytick.color'] = 'white'
 # Function to create the Plotly map with GeoJSON
 def create_map(df):
     # Assuming 'Geoshape' column contains stringified GeoJSON and 'NbName' is the identifier
@@ -71,10 +67,12 @@ def app():
     st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
     fig, ax = plt.subplots(figsize=(6, 5))
     ax.set_facecolor('#0E1117')
+    explode = (0, 0.1, 0, 0)
+    colors = ['#e1e9f5','#7792bd','#2f4f82','#062454']
+    
     # Create a pie chart on the axis
-    ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%')
+    ax.pie(value_counts, labels=value_counts.index, autopct='%1.1f%%', explode=explode, shadow=True, startangle=90, colors = colors)
     ax.legend()
-    fig.set_facecolor('#0E1117')
     # Display the plot in Streamlit
     buf = BytesIO()
     fig.savefig(buf, format="png")
