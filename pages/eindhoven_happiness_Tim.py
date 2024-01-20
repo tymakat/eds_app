@@ -22,7 +22,7 @@ def create_map(df):
         df,
         geojson=geojson,
         color="dummy_value",
-        locations="id",
+        locations="NbId",
         featureidkey="id",
         center={"lat": 51.4416, "lon": 5.4697},  # Adjust as needed
         mapbox_style="open-street-map",
