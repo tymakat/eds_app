@@ -13,7 +13,7 @@ def create_map(df):
         geoshape['properties'] = {'id': row['NbName']}
         features.append(geoshape)
 
-    geojson = {'type': 'FeatureCollection', 'features': features}
+    geojson = {'type': 'Feature', 'features': features}
 
     # Create a DataFrame for the locations
     locations_df = pd.DataFrame({
