@@ -108,7 +108,7 @@ def app():
     fig, ax = plt.subplots()
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctHighEducation"], label="% of people with higher education")
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctUnemployed"], label="% of unemployed")
-    ax.set_xlabel('Happiness rank')
+    ax.set_xlabel('Last places⬅️ Happiness rank ➡️First places')
     ax.set_ylabel('Values')
 
 # Flip the x-axis
