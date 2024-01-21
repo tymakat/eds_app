@@ -102,13 +102,14 @@ def app():
     smileys_replaced = smileys_replaced.dropna(subset=["Happiness rank"])
     smileys_replaced = smileys_replaced.dropna(subset=["PctHighEducation"])
     smileys_replaced = smileys_replaced.dropna(subset=["PctUnemployed"])
+    smileys_replaced.head()
     st.markdown("#### How higher education and unemployment influences happiness")
     fig, ax = plt.subplots()
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctHighEducation"], label="% of people with higher education")
-    ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctUnemployed"], label="% of unemployed")
     ax.legend()
 
     # Show the plot
     st.pyplot(fig)
 
+    
 app()
