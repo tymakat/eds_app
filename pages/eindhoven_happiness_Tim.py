@@ -130,7 +130,11 @@ def app():
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
     fig3, ax = plt.subplots(figsize=(8, 6))
-    grouped_avg_age.plot(kind='bar', ax=ax)
+    color_map = plt.cm.get_cmap('coolwarm')  # You can choose other colormaps like 'viridis', 'plasma', etc.
+    norm = plt.Normalize(grouped_avg_age.min(), grouped_avg_age.max())
+    colors = [color_map(norm(value)) for value in grouped_avg_age]
+    
+    grouped_avg_age.plot(kind='bar', ax=ax, colors = colors)
 
     # Set the title and labels
     ax.set_title('Average age of neighbourhoods grouped by happiness ranks')
