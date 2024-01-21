@@ -120,7 +120,7 @@ def app():
     # Show the plot
     st.markdown("#### Conclusion (as it may seem unclear from the graph): higher education and employment = more happiness")
     bins = [0, 10, 25, 40, 55, 70, 92]
-    labels = ['😁 Top 10', '😊 (Places 25-10)', '😐 (Places 40-25)', '😒 (Places 55-40)', '😡 (Top 70-55)', '🤬 (Top 92-70)']
+    labels = ['😁 Top 10', '😊 Places 25-10', '😐 Places 40-25', '😒 Places 55-40', '😡 Top 70-55', '😭 Top 92-70']
 
     # Create a new column 'Group' based on these bins
     smileys_replaced['Group'] = pd.cut(smileys_replaced['Happiness rank'], bins=bins, labels=labels, right=False)
@@ -142,7 +142,7 @@ def app():
                 ha='center', va='center', xytext=(0, 10), textcoords='offset points')
 
     # Adjust the y-axis range
-    ax.set_ylim(20, 50)
+    ax.set_ylim(25, 50)
 
     # Show the plot in Streamlit
     st.pyplot(fig)
