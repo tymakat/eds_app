@@ -137,6 +137,12 @@ def app():
 
     # Rotate x-tick labels for better readability
     plt.xticks(rotation=45, ha='right')
+    for p in ax.patches:
+        ax.annotate(f'{p.get_height():.2f}', (p.get_x() + p.get_width() / 2., p.get_height()),
+                ha='center', va='center', xytext=(0, 10), textcoords='offset points')
+
+    # Adjust the y-axis range
+    ax.set_ylim(20, 50)
 
     # Show the plot in Streamlit
     st.pyplot(fig)
