@@ -117,6 +117,7 @@ def app():
 
     # Show the plot
     st.pyplot(fig)
+    st.markdown("#### Conclusion (as it may seem unclear from the graph): higher education and employment = more happiness")
 
     
 app()
