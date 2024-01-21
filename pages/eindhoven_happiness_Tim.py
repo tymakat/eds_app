@@ -130,7 +130,7 @@ def app():
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
     fig3, ax = plt.subplots(figsize=(8, 6))
-    colors = ['#46874b', '#76b37a', '#80a883', '#d68585', '#d46868', '#9c3333']
+    colors = ['#46874b', '#76b37a', '#a9ccac', '#dea0a0', '#d46868', '#9c3333']
 
     grouped_avg_age.plot(kind='bar', ax=ax, color=colors)
 
