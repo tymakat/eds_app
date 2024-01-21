@@ -146,7 +146,7 @@ def app():
                 ha='center', va='center', xytext=(0, 10), textcoords='offset points')
 
     # Adjust the y-axis range
-    ax.set_ylim(30, 50)
+    ax.set_ylim(30, 46)
 
     # Show the plot in Streamlit
     buf = BytesIO()
