@@ -127,7 +127,7 @@ def app():
 
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
-    fig, ax = plt.subplots()
+    fig3, ax = plt.subplots(figsize=(8, 6))
     grouped_avg_age.plot(kind='bar', ax=ax)
 
     # Set the title and labels
@@ -145,6 +145,8 @@ def app():
     ax.set_ylim(25, 50)
 
     # Show the plot in Streamlit
-    st.pyplot(fig)
+    buf = BytesIO()
+    fig3.savefig(buf, format="png")
+    st.image(buf)
     
 app()
