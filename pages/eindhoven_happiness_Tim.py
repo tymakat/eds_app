@@ -137,7 +137,7 @@ def app():
     # Set the title and labels
     ax.set_title('Average age of a neighbourhood vs happiness rank')
     ax.set_xlabel('Happiness Rank Group')
-    ax.set_ylabel('Average Age')
+    ax.set_ylabel('Average Age (years)')
 
     # Rotate x-tick labels for better readability
     plt.xticks(rotation=45, ha='right')
