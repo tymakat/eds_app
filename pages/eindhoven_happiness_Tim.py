@@ -145,8 +145,6 @@ def app():
     ax.set_ylim(25, 50)
 
     # Show the plot in Streamlit
-    buf = BytesIO()
-    fig3.savefig(buf, format="png")
-    st.image(buf)
+    st.pyplot(fig)
     
 app()
