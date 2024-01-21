@@ -135,7 +135,7 @@ def app():
     grouped_avg_age.plot(kind='bar', ax=ax, color=colors)
 
     # Set the title and labels
-    ax.set_title('Average age of neighbourhoods grouped by happiness ranks')
+    ax.set_title('Average age of a neighbourhood vs happiness rank')
     ax.set_xlabel('Happiness Rank Group')
     ax.set_ylabel('Average Age')
 
