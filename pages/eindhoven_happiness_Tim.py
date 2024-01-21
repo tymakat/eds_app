@@ -105,7 +105,7 @@ def app():
     smileys_replaced = smileys_replaced.sort_values(by='Happiness rank', ascending=True)
 
     st.markdown("#### How higher education and unemployment influences happiness")
-    fig2, ax = plt.subplots(figsize=(7, 5))
+    fig2, ax = plt.subplots(figsize=(8, 6))
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctHighEducation"], label="% of people with higher education")
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctUnemployed"], label="% of unemployed")
     ax.set_xlabel('Last places⬅️ Happiness rank ➡️First places')
