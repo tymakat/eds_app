@@ -119,7 +119,7 @@ def app():
     st.image(buf)
     # Show the plot
     st.markdown("#### Conclusion (as it may seem unclear from the graph): higher education and employment = more happiness")
-    st.markdown("#### How average age correlates with happiness")
+    st.markdown("### How average age correlates with happiness")
 
     bins = [0, 10, 25, 40, 55, 70, 92]
     labels = ['😁 Top 10', '😊 Places 25-10', '😐 Places 40-25', '😒 Places 55-40', '😡 Top 70-55', '😭 Top 92-70']
@@ -129,7 +129,7 @@ def app():
 
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
-    fig3, ax = plt.subplots(figsize=(6, 9))
+    fig3, ax = plt.subplots(figsize=(10, 8))
     grouped_avg_age.plot(kind='bar', ax=ax)
 
     # Set the title and labels
