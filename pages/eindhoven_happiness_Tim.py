@@ -119,6 +119,26 @@ def app():
     st.image(buf)
     # Show the plot
     st.markdown("#### Conclusion (as it may seem unclear from the graph): higher education and employment = more happiness")
+    bins = [0, 10, 25, 40, 55, 70, 92]
+    labels = ['😁 Top 10', '😊 (Places 25-10)', '😐 (Places 40-25)', '😒 (Places 55-40)', '😡 (Top 70-55)', '🤬 (Top 92-70)']
 
+    # Create a new column 'Group' based on these bins
+    smileys_replaced['Group'] = pd.cut(smileys_replaced['HappinessRank'], bins=bins, labels=labels, right=False)
+
+    # Calculate the average age for each group
+    grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
+    fig, ax = plt.subplots()
+    grouped_avg_age.plot(kind='bar', ax=ax)
+
+    # Set the title and labels
+    ax.set_title('Average age of neighbourhoods grouped by happiness ranks')
+    ax.set_xlabel('Happiness Rank Group')
+    ax.set_ylabel('Average Age')
+
+    # Rotate x-tick labels for better readability
+    plt.xticks(rotation=45, ha='right')
+
+    # Show the plot in Streamlit
+    st.pyplot(fig)
     
 app()
