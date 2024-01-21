@@ -119,6 +119,8 @@ def app():
     st.image(buf)
     # Show the plot
     st.markdown("#### Conclusion (as it may seem unclear from the graph): higher education and employment = more happiness")
+    st.markdown("#### How average age correlates with happiness")
+
     bins = [0, 10, 25, 40, 55, 70, 92]
     labels = ['😁 Top 10', '😊 Places 25-10', '😐 Places 40-25', '😒 Places 55-40', '😡 Top 70-55', '😭 Top 92-70']
 
