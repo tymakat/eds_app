@@ -70,7 +70,7 @@ def app():
     st_map = create_map(df)
     st.plotly_chart(st_map, use_container_width=True)
     
-    st.markdown("#### Preferrable transport type of top-30 happiest Eindhoven districts")
+    st.markdown("### Preferrable transport type of top-30 happiest Eindhoven districts")
     fig, ax = plt.subplots(figsize=(6, 6))
     explode = (0, 0.1, 0, 0)
     colors = ['#7792bd','#e1e9f5','#2f4f82','#062454']
@@ -82,7 +82,7 @@ def app():
     fig.savefig(buf, format="png")
     st.image(buf)
     
-    st.markdown("#### Percentage of people doing sports vs. Happiness score")
+    st.markdown("### Percentage of people doing sports vs. Happiness score")
     fig1, ax = plt.subplots(figsize=(7, 5))
     ax.scatter(df["Happiness score"], df["PctSports"])
     
@@ -104,7 +104,7 @@ def app():
     smileys_replaced = smileys_replaced.dropna(subset=["PctUnemployed"])
     smileys_replaced = smileys_replaced.sort_values(by='Happiness rank', ascending=True)
 
-    st.markdown("#### How higher education and unemployment influences happiness")
+    st.markdown("### How higher education and unemployment influences happiness")
     fig2, ax = plt.subplots(figsize=(8, 6))
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctHighEducation"], label="% of people with higher education")
     ax.plot(smileys_replaced['Happiness rank'], smileys_replaced["PctUnemployed"], label="% of unemployed")
@@ -129,7 +129,7 @@ def app():
 
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
-    fig3, ax = plt.subplots(figsize=(10, 8))
+    fig3, ax = plt.subplots(figsize=(8, 6))
     grouped_avg_age.plot(kind='bar', ax=ax)
 
     # Set the title and labels
