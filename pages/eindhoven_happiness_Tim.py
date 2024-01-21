@@ -123,7 +123,7 @@ def app():
     labels = ['😁 Top 10', '😊 (Places 25-10)', '😐 (Places 40-25)', '😒 (Places 55-40)', '😡 (Top 70-55)', '🤬 (Top 92-70)']
 
     # Create a new column 'Group' based on these bins
-    smileys_replaced['Group'] = pd.cut(smileys_replaced['HappinessRank'], bins=bins, labels=labels, right=False)
+    smileys_replaced['Group'] = pd.cut(smileys_replaced['Happiness rank'], bins=bins, labels=labels, right=False)
 
     # Calculate the average age for each group
     grouped_avg_age = smileys_replaced.groupby('Group')['average age'].mean().reindex(labels)
