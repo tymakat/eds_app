@@ -122,7 +122,7 @@ def app():
     st.markdown("### How average age correlates with happiness")
 
     bins = [0, 10, 25, 40, 55, 70, 92]
-    labels = ['😁 Top 10', '😊 Places 25-10', '😐 Places 40-25', '😒 Places 55-40', '😡 Top 70-55', '😭 Top 92-70']
+    labels = ['Top 10', 'Top 10-25', 'Top 25-40', 'Top 40-55', 'Bottom 55-70', 'Bottom 70-92']
 
     # Create a new column 'Group' based on these bins
     smileys_replaced['Group'] = pd.cut(smileys_replaced['Happiness rank'], bins=bins, labels=labels, right=False)
