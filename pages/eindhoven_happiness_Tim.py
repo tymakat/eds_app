@@ -132,8 +132,7 @@ def app():
     fig3, ax = plt.subplots(figsize=(8, 6))
     colors = ['#46874b', '#76b37a', '#80a883', '#d68585', '#d46868', '#9c3333']
 
-    
-    grouped_avg_age.plot(kind='bar', ax=ax, colors = colors)
+    grouped_avg_age.plot(kind='bar', ax=ax, colors=colors)
 
     # Set the title and labels
     ax.set_title('Average age of neighbourhoods grouped by happiness ranks')
