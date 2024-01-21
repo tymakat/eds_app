@@ -44,13 +44,13 @@ def create_map(df):
         center={"lat": 51.4416, "lon": 5.4697},
         hover_data=['Neighbourhood', 'Happiness', "Happiness rank", "Happiness score"], # Adjust as needed
         mapbox_style="open-street-map",
-        zoom=11.8,
+        zoom=11.5,
         opacity=0.8
     )
     
     fig.update_layout(
-        height=1000,  # Set the height of the map in pixels
-        width=1000    # Set the width of the map in pixels
+        height=950,  # Set the height of the map in pixels
+        width=950    # Set the width of the map in pixels
     )
     fig.update_traces(
     hoverlabel=dict(font_size=15)  
